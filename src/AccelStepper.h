@@ -337,6 +337,7 @@ public:
         FULL4WIRE = 4, ///< 4 wire full stepper, 4 motor pins required
 	HALF3WIRE = 6, ///< 3 wire half stepper, such as HDD spindle, 3 motor pins required
 	HALF4WIRE = 8  ///< 4 wire half stepper, 4 motor pins required
+    X25 = 8  ///< 4 wire X25, 4 motor pins required
     } MotorInterfaceType;
 
     /// Constructor. You can have multiple simultaneous steppers, all moving
@@ -357,6 +358,7 @@ public:
     /// AccelStepper::FULL4WIRE (4) means a 4 wire stepper (4 pins required). 
     /// AccelStepper::HALF3WIRE (6) means a 3 wire half stepper, such as HDD spindle (3 pins required)
     /// AccelStepper::HALF4WIRE (8) means a 4 wire half stepper (4 pins required)
+    /// AccelStepper::HALF4WIRE (8) means a 4 wire X25 (4 pins required)
     /// Defaults to AccelStepper::FULL4WIRE (4) pins.
     /// \param[in] pin1 Arduino digital pin number for motor pin 1. Defaults
     /// to pin 2. For a AccelStepper::DRIVER (interface==1), 

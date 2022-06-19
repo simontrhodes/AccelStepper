@@ -347,6 +347,10 @@ void AccelStepper::step(long step)
 	case HALF4WIRE:
 	    step8(step);
 	    break;  
+
+    case X25:
+        step9(step);
+        break;
     }
 }
 
@@ -538,6 +542,41 @@ void AccelStepper::step8(long step)
             break;
     }
 }
+
+// X25 function
+// This is passed the current step number (0 to 5)
+// Subclasses can override
+void AccelStepper::step9(long step)
+{
+    switch (step % 6)
+    {
+    case 0:    // 1001
+        setOutputPins(0b1001);
+        break;
+
+    case 1:    // 0001
+        setOutputPins(0b0001);
+        break;
+
+    case 2:    // 0111
+        setOutputPins(0b0111);
+        break;
+
+    case 3:    // 0110
+        setOutputPins(0b0110);
+        break;
+
+    case 4:    // 1110
+        setOutputPins(0b1110);
+        break;
+
+    case 5:    //1000
+        setOutputPins(0b1000);
+        break;
+
+    }
+}
+
     
 // Prevents power consumption on the outputs
 void    AccelStepper::disableOutputs()
